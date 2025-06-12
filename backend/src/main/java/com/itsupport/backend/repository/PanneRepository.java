@@ -1,9 +1,10 @@
 package com.itsupport.backend.repository;
 
-import com.itsupport.backend.models.Equipement;
+import com.itsupport.backend.models.Pannes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface EquipementRepository extends JpaRepository<Equipement, Integer> {
+public interface PanneRepository extends JpaRepository<Pannes, Integer> {
 }
