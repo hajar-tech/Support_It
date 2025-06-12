@@ -9,15 +9,11 @@ import java.util.Date;
 
 @Entity
 public class Pannes {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String title;
-    private String description;
-    private Date dateSignalement;
-    private Date dateResolution;
+    private String Name;
 
     public int getId() {
         return id;
@@ -27,35 +23,14 @@ public class Pannes {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return Name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    public Date getDateSignalement() {
-        return dateSignalement;
-    }
-
-    public void setDateSignalement(Date dateSignalement) {
-        this.dateSignalement = dateSignalement;
-    }
-
-    public Date getDateResolution() {
-        return dateResolution;
-    }
-
-    public void setDateResolution(Date dateResolution) {
-        this.dateResolution = dateResolution;
-    }
-}
+   }
