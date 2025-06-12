@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class Equipement {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -67,4 +68,5 @@ public class Equipement {
     public void setStatusEquipement(String statusEquipement) {
         this.statusEquipement = statusEquipement;
     }
+
 }
