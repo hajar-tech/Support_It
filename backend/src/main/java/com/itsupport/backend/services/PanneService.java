@@ -34,4 +34,8 @@ public class PanneService {
         return panneRepository.save(panne);
     }
 
+
+    public void deletePanne(int id) {
+        panneRepository.deleteById(id);
+    }
 }
