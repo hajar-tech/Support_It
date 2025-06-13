@@ -27,4 +27,5 @@ public class PanneController {
     public List<Pannes> getAllPannes() {
         return panneService.getAllPannes();
     }
+
 }
