@@ -22,6 +22,7 @@ public class PanneService {
     public Pannes addPanne(Pannes panne) {
         return panneRepository.save(panne);
     }
+
     public List<Pannes> getAllPannes() {
         return panneRepository.findAll();
     }
@@ -31,6 +32,10 @@ public class PanneService {
     }
 
     public Pannes updatePanne(Pannes panne) {
+        if (!panneRepository.existsById(panne.getId())) {
+        throw new IllegalArgumentException("Aucune panne trouvée avec l'ID: " + panne.getId());
+    }
+
         return panneRepository.save(panne);
     }
 
