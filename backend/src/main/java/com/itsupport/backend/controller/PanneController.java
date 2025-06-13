@@ -6,6 +6,7 @@ import com.itsupport.backend.models.Pannes;
 import com.itsupport.backend.services.PanneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,11 @@ public class PanneController {
     }
 
     @PostMapping("/add")
-    public Pannes addPanne(@RequestBody Pannes pannes) {
-        return panneService.addPanne(pannes);
+    public ResponseEntity<Pannes> addPanne(@Valid @RequestBody PanneDto panneDto) {
+        Pannes panne = new Pannes();
+        panne.setName(panneDto.name());
+        Pannes savedPanne = panneService.addPanne(panne);
+        return new ResponseEntity<>(savedPanne, HttpStatus.CREATED);
     }
 
     @GetMapping

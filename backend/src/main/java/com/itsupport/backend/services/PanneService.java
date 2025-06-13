@@ -22,6 +22,7 @@ public class PanneService {
     public Pannes addPanne(Pannes panne) {
         return panneRepository.save(panne);
     }
+
     public List<Pannes> getAllPannes() {
         return panneRepository.findAll();
     }
