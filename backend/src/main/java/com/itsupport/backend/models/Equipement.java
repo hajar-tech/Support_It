@@ -1,6 +1,12 @@
 package com.itsupport.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.itsupport.backend.enums.EquipementStatus;
+import com.itsupport.backend.enums.TypeEquipement;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Equipement {
@@ -12,14 +18,56 @@ public class Equipement {
     private long idEquipement;
     private String nameEquipement;
     private String descriptionEquipement;
-    private String typeEquipement;
-    private String dataEquipement;
-    private String statusEquipement;
+    private LocalDate dateEquipement;
+
+
+   @Enumerated(EnumType.STRING)
+   @Column(name = "type" , nullable = false , length = 100)
+   private TypeEquipement type;
+
+   @Enumerated(EnumType.STRING)
+   @Column(name = "status" , nullable = false , length = 100)
+   private EquipementStatus status;
 
 //    @OneToMany(mappedBy = "equipement")
 //    private List<Panne> pannes;
 //
 
+   @OneToMany(mappedBy = "equipement" , cascade = CascadeType.ALL ,orphanRemoval = true)
+   @JsonIgnore
+   private List<SupportTiket> supportTikets;
+
+    public List<SupportTiket> getSupportTikets() {
+        return supportTikets;
+    }
+
+    public void setSupportTikets(List<SupportTiket> supportTikets) {
+        this.supportTikets = supportTikets;
+    }
+
+    public LocalDate getDateEquipement() {
+        return dateEquipement;
+    }
+
+    public void setDateEquipement(LocalDate dateEquipement) {
+        this.dateEquipement = dateEquipement;
+    }
+
+    public TypeEquipement getType() {
+        return type;
+    }
+
+    public void setType(TypeEquipement type) {
+        this.type = type;
+    }
+
+    public EquipementStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EquipementStatus status) {
+        this.status = status;
+    }
 
     public long getIdEquipement() {
         return idEquipement;
@@ -45,28 +93,10 @@ public class Equipement {
         this.descriptionEquipement = descriptionEquipement;
     }
 
-    public String getTypeEquipement() {
-        return typeEquipement;
-    }
 
-    public void setTypeEquipement(String typeEquipement) {
-        this.typeEquipement = typeEquipement;
-    }
 
-    public String getDataEquipement() {
-        return dataEquipement;
-    }
 
-    public void setDataEquipement(String dataEquipement) {
-        this.dataEquipement = dataEquipement;
-    }
 
-    public String getStatusEquipement() {
-        return statusEquipement;
-    }
 
-    public void setStatusEquipement(String statusEquipement) {
-        this.statusEquipement = statusEquipement;
-    }
 
 }
