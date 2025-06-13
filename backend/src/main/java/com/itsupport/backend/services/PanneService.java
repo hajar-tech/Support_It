@@ -30,4 +30,8 @@ public class PanneService {
         return panneRepository.findById(id);
     }
 
+    public Pannes updatePanne(Pannes panne) {
+        return panneRepository.save(panne);
+    }
+
 }

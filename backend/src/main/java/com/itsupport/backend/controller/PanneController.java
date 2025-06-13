@@ -28,4 +28,8 @@ public class PanneController {
         return panneService.getAllPannes();
     }
 
+    @PutMapping("/{id}")
+    public Pannes updatePanne(@RequestBody Pannes pannes) {
+        return panneService.updatePanne(pannes);
+    }
 }
