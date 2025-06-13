@@ -32,4 +32,9 @@ public class PanneController {
     public Pannes updatePanne(@RequestBody Pannes pannes) {
         return panneService.updatePanne(pannes);
     }
+
+    @DeleteMapping
+    public void deletePanne(@PathVariable int id) {
+        panneService.deletePanne(id);
+    }
 }
