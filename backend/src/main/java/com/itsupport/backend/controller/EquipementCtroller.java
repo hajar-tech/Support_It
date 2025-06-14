@@ -31,4 +31,12 @@ public class EquipementCtroller {
         Equipement updatedEquipement = equipementService.updateEquipement(id, equipmentDetails);
         return ResponseEntity.ok(updatedEquipement);
     }
+
+    //afficher equipement
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Equipement> getEquipementById(@PathVariable Long id){
+        Equipement equipement = equipementService.displayEquipemetById(id);
+      return   ResponseEntity.ok(equipement);
+    }
 }

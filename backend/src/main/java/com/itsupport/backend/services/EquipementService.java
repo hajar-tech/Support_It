@@ -30,4 +30,11 @@ public class EquipementService {
         return equipementRepository.save(equipement);
     }
 
+    //afficher un equipement par id
+
+    public Equipement displayEquipemetById (Long id){
+        Equipement equipement = equipementRepository.findById(id).orElseThrow(()-> new RuntimeException("Equipement non exist !"));
+        return equipement;
+    }
+
 }
