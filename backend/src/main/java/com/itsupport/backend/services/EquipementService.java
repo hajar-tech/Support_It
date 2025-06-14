@@ -5,6 +5,8 @@ import com.itsupport.backend.repository.EquipementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EquipementService {
 
@@ -35,6 +37,12 @@ public class EquipementService {
     public Equipement displayEquipemetById (Long id){
         Equipement equipement = equipementRepository.findById(id).orElseThrow(()-> new RuntimeException("Equipement non exist !"));
         return equipement;
+    }
+
+    //afficher tout les equipement
+
+    public List<Equipement> displayAllEquipements(){
+        return equipementRepository.findAll();
     }
 
 }
