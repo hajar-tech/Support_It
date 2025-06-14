@@ -19,4 +19,15 @@ public class EquipementService {
         return equipementRepository.save(equipment);
     }
 
+    //updateEquipement
+    public Equipement updateEquipement(Long id ,Equipement equipmentDetails) {
+        Equipement equipement = equipementRepository.findById(id).orElseThrow(()-> new RuntimeException("Equipement non exist !"));
+        equipement.setNameEquipement(equipmentDetails.getNameEquipement());
+        equipement.setDescriptionEquipement(equipmentDetails.getDescriptionEquipement());
+        equipement.setDateEquipement(equipmentDetails.getDateEquipement());
+        equipement.setStatus(equipmentDetails.getStatus());
+        equipement.setType(equipmentDetails.getType());
+        return equipementRepository.save(equipement);
+    }
+
 }
