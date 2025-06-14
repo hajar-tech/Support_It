@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RequestMapping("/Panne")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class PanneController {
 
     private final PanneService panneService;
@@ -31,7 +32,7 @@ public class PanneController {
         return new ResponseEntity<>(savedPanne, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping()
     public List<Pannes> getAllPannes() {
         return panneService.getAllPannes();
     }

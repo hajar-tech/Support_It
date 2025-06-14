@@ -16,9 +16,11 @@ public class Pannes {
     @NotBlank(message = "Le nom est requis")
     private String Name;
 
+
     @OneToMany(mappedBy = "pannes", fetch = FetchType.LAZY )
     @JsonIgnore
     private List<SupportTiket> supportTicketList;
+
 
 
     public int getId() {
@@ -37,6 +39,12 @@ public class Pannes {
         Name = name;
     }
 
+    public List<SupportTiket> getSupportTicketList() {
+        return supportTicketList;
+    }
 
+    public void setSupportTicketList(List<SupportTiket> supportTicketList) {
+        this.supportTicketList = supportTicketList;
+    }
 
    }
