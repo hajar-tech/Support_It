@@ -1,0 +1,10 @@
+<form [formGroup]="panneForm" (ngSubmit)="onSubmit()" class="space-y-4 max-w-md mx-auto p-4 border rounded shadow">
+  <label class="block">
+    <span class="text-gray-700">Nom de la panne</span>
+    <input type="text" formControlName="name" class="mt-1 block w-full border border-gray-300 rounded p-2" />
+  </label>
+
+  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+    Ajouter
+  </button>
+</form>
