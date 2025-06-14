@@ -6,6 +6,8 @@ import com.itsupport.backend.services.EquipementService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/equipement")
 public class EquipementCtroller {
@@ -30,5 +32,22 @@ public class EquipementCtroller {
     public ResponseEntity<Equipement> updateEquipement( @PathVariable Long id,  @RequestBody Equipement equipmentDetails) {
         Equipement updatedEquipement = equipementService.updateEquipement(id, equipmentDetails);
         return ResponseEntity.ok(updatedEquipement);
+    }
+
+    //afficher equipement
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Equipement> getEquipementById(@PathVariable Long id){
+        Equipement equipement = equipementService.displayEquipemetById(id);
+      return   ResponseEntity.ok(equipement);
+    }
+
+    //afficher tout les equipements
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Equipement>> getAllEquipement(){
+        List<Equipement> equipements = equipementService.displayAllEquipements();
+
+        return ResponseEntity.ok(equipements);
     }
 }
