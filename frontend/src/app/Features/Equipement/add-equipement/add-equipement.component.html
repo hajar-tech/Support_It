@@ -1,0 +1,28 @@
+<form [formGroup]="equipementForm" (ngSubmit)="onSubmit()" class="form">
+  <label>Nom :</label>
+  <input type="text" formControlName="nameEquipement" required />
+
+  <label>Description :</label>
+  <input type="text" formControlName="descriptionEquipement" />
+
+  <label>Date :</label>
+  <input type="date" formControlName="dateEquipement" required />
+
+  <label>Type :</label>
+  <select formControlName="type">
+    <option value="LAPTOP">LAPTOP</option>
+    <option value="DESKTOP">DESKTOP</option>
+    <option value="PRINTER">PRINTER</option>
+    <option value="SERVER">SERVER</option>
+  </select>
+
+  <label>Status :</label>
+  <select formControlName="status">
+    <option value="ACTIVE">En service</option>
+    <option value="OBSOLETE">En panne</option>
+    <option value="OUT_OF_SERVICE">Hors service</option>
+  </select>
+
+  <button type="submit" [disabled]="equipementForm.invalid">Ajouter</button>
+</form>
+
