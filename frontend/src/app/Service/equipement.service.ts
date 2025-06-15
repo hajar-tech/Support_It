@@ -21,6 +21,6 @@ export class EquipementService {
   constructor(private http : HttpClient) { }
 
   addEquipement (equipement : Equipement) : Observable<Equipement>{
-    return this.http.post<Equipement>(`${this.apiUrl}/add`,equipement)
+    return this.http.post<Equipement>(`${this.apiUrl}/add`,equipement);
   }
 }
