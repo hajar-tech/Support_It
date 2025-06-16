@@ -12,6 +12,8 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/tickets")
+@CrossOrigin(origins = "http://localhost:4200/")
+
 public class SupportTiketController {
 
 

@@ -88,5 +88,4 @@ public class SupportTiketServiceTest {
         verify(supportTiketRepository, times(1)).save(any(SupportTiket.class));
     }
 
-    // باقي الاختبارات تبقى نفسها وتعمل بنفس الشكل تمامًا
 }
