@@ -11,7 +11,7 @@ export interface Panne{
 })
 
 export class PanneService {
-  private apiUrl = 'http://localhost:8080/Panne/add';
+  private apiUrl = 'http://localhost:8081/Panne/add';
 
   constructor(private http: HttpClient) {}
 
