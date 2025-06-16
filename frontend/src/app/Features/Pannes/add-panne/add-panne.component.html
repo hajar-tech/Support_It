@@ -8,3 +8,20 @@
     Ajouter
   </button>
 </form>
+
+<!-- Liste des pannes -->
+<div class="mt-8 p-4 max-w-4xl mx-auto">
+    <h2 class="text-xl font-semibold mb-4 text-center text-gray-800">Liste des Pannes</h2>
+
+    <div *ngIf="pannes.length > 0; else noPannes"
+         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div *ngFor="let panne of pannes"
+             class="bg-white shadow p-4 rounded-lg border border-gray-200">
+            <h3 class="text-lg font-bold text-red-600">{{ panne.name }}</h3>
+        </div>
+    </div>
+
+    <ng-template #noPannes>
+        <p class="text-center text-gray-500">Aucune panne enregistrée.</p>
+    </ng-template>
+</div>
