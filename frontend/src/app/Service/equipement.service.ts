@@ -16,7 +16,7 @@ export interface Equipement {
 })
 export class EquipementService {
 
-  private apiUrl = 'http://localhost:8080/equipement';
+  private apiUrl = 'http://localhost:8081/equipement';
 
   constructor(private http : HttpClient) { }
 

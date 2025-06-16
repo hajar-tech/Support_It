@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {PanneService} from '../../../Service/panne.service';
+import { PanneService, Panne } from '../../../Service/panne.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-panne',
@@ -9,8 +10,9 @@ import {PanneService} from '../../../Service/panne.service';
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add-panne.component.html'
 })
-export class AddPanneComponent {
+export class AddPanneComponent implements OnInit {
   panneForm: FormGroup;
+  pannes: Panne[] = [];
 
   constructor(private fb: FormBuilder, private panneService: PanneService) {
     this.panneForm = this.fb.group({
@@ -18,15 +20,26 @@ export class AddPanneComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.fetchPannes();
+  }
+
   onSubmit() {
     if (this.panneForm.valid) {
       this.panneService.ajouterPanne(this.panneForm.value).subscribe({
-        next: (res: any) => {
-          console.log('Panne ajoutée avec succès', res);
+        next: () => {
           this.panneForm.reset();
+          this.fetchPannes();
         },
-        error: (err: any) => console.error(err)
+        error: (err) => console.error(err)
       });
     }
+  }
+
+  fetchPannes(): void {
+    this.panneService.RecupererPannes().subscribe({
+      next: (data) => this.pannes = data,
+      error: (err) => console.error('Erreur chargement pannes :', err)
+    });
   }
 }

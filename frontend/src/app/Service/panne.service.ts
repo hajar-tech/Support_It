@@ -11,12 +11,18 @@ export interface Panne{
 })
 
 export class PanneService {
-  private apiUrl = 'http://localhost:8080/Panne/add';
+  private apiUrl = 'http://localhost:8081/Panne';
 
   constructor(private http: HttpClient) {}
 
   ajouterPanne(panne: Panne): Observable<Panne> {
-    return this.http.post<Panne>(this.apiUrl, panne);
+    return this.http.post<Panne>(`${this.apiUrl}/add`, panne);
   }
+
+  RecupererPannes(): Observable<Panne[]> {
+    return this.http.get<Panne[]>(`${this.apiUrl}`);
+  }
+
+
 
 }
